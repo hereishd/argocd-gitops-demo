@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-hello
+  labels:
+    app.kubernetes.io/name: node-welcome-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: node-hello
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: node-hello
+    spec:
+      containers:
+      - name: node-hello
+        image: dhereish/node-hello-world:1.0.0
+        ports:
+          - containerPort: 3000
